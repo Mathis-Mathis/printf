@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmousli <mmousli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/06 15:05:51 by mmousli           #+#    #+#             */
-/*   Updated: 2025/12/06 15:05:53 by mmousli          ###   ########.fr       */
+/*   Created: 2025/12/06 17:29:48 by mmousli           #+#    #+#             */
+/*   Updated: 2025/12/06 17:29:49 by mmousli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../include/ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+static int	ft_putnbr_u_rec(unsigned int nb)
+{
+	int	count;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *s);
-int	ft_putptr(unsigned long n);
-int	ft_puthex(unsigned long n);
-int	ft_puthex_up(unsigned long n);
-int	ft_putnbr(int n);
-int	ft_putnbr_u(unsigned int n);
+	count = 0;
+	if (nb >= 10)
+	{
+		count += ft_putnbr_u_rec(nb / 10);
+		count += ft_putnbr_u_rec(nb % 10);
+	}
+	else
+	{
+		count += ft_putchar(nb + '0');
+	}
+	return (count);
+}
 
-#endif
+int	ft_putnbr_u(unsigned int n)
+{
+	return (ft_putnbr_u_rec(n));
+}

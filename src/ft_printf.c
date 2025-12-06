@@ -18,6 +18,16 @@ static int	ft_format(va_list args, char spec)
 		return (ft_putchar(va_arg(args, int)));
 	else if (spec == 's')
 		return (ft_putstr(va_arg(args, char *)));
+	else if (spec == 'p')
+		return (ft_putptr(va_arg(args, unsigned long)));
+	else if (spec == 'x')
+		return (ft_puthex(va_arg(args, unsigned int)));
+	else if (spec == 'X')
+		return (ft_puthex_up(va_arg(args, unsigned int)));
+	else if (spec == 'd' || spec == 'i')
+		return (ft_putnbr(va_arg(args, int)));
+	else if (spec == 'u')
+		return (ft_putnbr_u(va_arg(args, unsigned int)));
 	else if (spec == '%')
 		return (ft_putchar('%'));
 	return (0);
