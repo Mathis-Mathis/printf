@@ -12,20 +12,13 @@
 
 #include "../include/ft_printf.h"
 
-static int	ft_format(va_list argcs, char spec)
+static int	ft_format(va_list args, char spec)
 {
-	int	count;
-
-	count = 0;
 	if (spec == 'c')
-	{
-		count += ft_putchar(va_arg(args, int));
-		else if (spec == '%')
-		{
-			count += ft_putchar('%');
-		}
-		return (count);
-	}
+		return (ft_putchar(va_args args, int));
+	else if (spec == '%')
+		return (ft_putchar('%'));
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
