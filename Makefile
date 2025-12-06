@@ -22,7 +22,7 @@ RM			= rm -f
 
 SRC			= src/ft_printf.c
 
-UTILS		= utils/ft_utils1.c / utils/ft_utils2.c
+UTILS		= utils/ft_putchar.c
 
 OBJ			= $(SRC:.c=.o) $(UTILS:.c=.o)
 

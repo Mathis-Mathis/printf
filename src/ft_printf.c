@@ -12,30 +12,38 @@
 
 #include "../include/ft_printf.h"
 
-static int	ft_format(va_list argcs, int c)
+static int	ft_format(va_list argcs, char spec)
 {
-	if (c == 'c')
+	int	count;
+
+	count = 0;
+	if (spec == 'c')
 	{
-		return (ft_putchar(va_args(args, int)));
+		count += ft_putchar(va_arg(args, int));
+		else if (spec == '%')
+		{
+			count += ft_putchar('%');
+		}
+		return (count);
 	}
-	return (0);
 }
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
-	int		countl
+	int		count;
 
-	va_args(args, format);
+	if (!format)
+		return (-1);
+	va_start(args, format);
 	i = 0;
 	count = 0;
-
 	while (format[i])
 	{
-		if (format[i] == '%d' && format[i + 1])
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			count += ft_format(args, fornat[i + 1]);
+			count += ft_format(args, format[i + 1]);
 			i += 2;
 		}
 		else
@@ -44,6 +52,6 @@ int	ft_printf(const char *, ...)
 			i++;
 		}
 	}
-	va_end(args)
+	va_end(args);
 	return (count);
 }
