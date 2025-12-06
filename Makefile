@@ -13,16 +13,18 @@
 NAME		= libftprintf.a
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I include
+CFLAGS		= -Wall -Wextra -Werror
+INCLUDES	= -I include
 
 AR			= ar rcs
 RM			= rm -f
 
 
-#Pour ajouter les utils : utils/xxxx.c 
 SRC			= src/ft_printf.c
 
-OBJ			= $(SRC:.c=.o)
+UTILS		= utils/ft_utils1.c / utils/ft_utils2.c
+
+OBJ			= $(SRC:.c=.o) $(UTILS:.c=.o)
 
 
 
@@ -30,3 +32,16 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
