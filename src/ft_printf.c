@@ -15,7 +15,9 @@
 static int	ft_format(va_list args, char spec)
 {
 	if (spec == 'c')
-		return (ft_putchar(va_args args, int));
+		return (ft_putchar(va_arg(args, int)));
+	else if (spec == 's')
+		return (ft_putstr(va_arg(args, char *)));
 	else if (spec == '%')
 		return (ft_putchar('%'));
 	return (0);

@@ -22,7 +22,7 @@ RM			= rm -f
 
 SRC			= src/ft_printf.c
 
-UTILS		= utils/ft_putchar.c
+UTILS		= utils/ft_putchar.c utils/ft_putstr.c
 
 OBJ			= $(SRC:.c=.o) $(UTILS:.c=.o)
 
@@ -37,7 +37,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
