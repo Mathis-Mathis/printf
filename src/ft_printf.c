@@ -61,7 +61,6 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-
 /*int	main(void)
 {
 	ft_printf("%s", "salut");
