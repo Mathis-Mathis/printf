@@ -60,3 +60,11 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
+
+/*int	main(void)
+{
+	ft_printf("%s", "salut");
+	ft_printf("%i", 152);
+	return (0);
+}*/
